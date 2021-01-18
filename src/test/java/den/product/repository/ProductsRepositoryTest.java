@@ -23,6 +23,7 @@ public class ProductsRepositoryTest {
 
     public final static Integer ID_11= 11;
     public final static Products PRODUCTS11 = new Products("TestName11", "TestDescription11");
+    public final static Products PRODUCTS12 = new Products(11, "TestName11/1", "TestDescription11/1");
 
     public final static Integer ID_200 = 200;
     public final static Products PRODUCTS200 = new Products("TestName2", "TestDescription2");
@@ -36,6 +37,8 @@ public class ProductsRepositoryTest {
     public final static Integer ID_7 = 7;
     public final static Products PRODUCTS7 = new Products(7,"Сок", "описание продукта");
 
+    public final static Products PRODUCTS7_1 = new Products(7,"Сок1", "описание продукта1");
+
     @Autowired
     ProductsRepository repository;
 
@@ -47,11 +50,13 @@ public class ProductsRepositoryTest {
 
     @Test
     public void update() {
+        repository.update(PRODUCTS7_1);
+        assertEquals(repository.get(7), PRODUCTS7_1);
+
     }
 
     @Test
     public void get() {
-        //repository.save(PRODUCTS200);
         assertEquals(repository.get(1), PRODUCTS1);
     }
 
